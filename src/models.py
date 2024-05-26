@@ -21,4 +21,4 @@ class RefreshSessionModel(Base):
     refresh_token:Mapped[str] = mapped_column(unique=True)
     expires:Mapped[int]
     created:Mapped[datetime] = mapped_column(TIMESTAMP(timezone=True), default=func.now())
-    user_id:Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"))
+    user_id:Mapped[int] = mapped_column(ForeignKey("user.id", ondelete="CASCADE"))
