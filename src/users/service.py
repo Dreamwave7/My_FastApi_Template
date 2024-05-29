@@ -1,19 +1,17 @@
 from sqlalchemy import insert, values, delete
 from passlib.context import CryptContext
-from users import schemas
+from users.schemas import UserRegister
 from database import Session
 from models import UserModel
+
 
 context = CryptContext(schemes=["bcrypt"])
 
 class UserService:
     @staticmethod
-    async def register_new_user(user: schemas.UserRegister):
+    async def register_new_user(user: UserRegister):
         async with Session() as connect:
-            new_user = UserModel(**user.model_dump())
-            adding = connect.add(new_user)
-            await connect.commit()
-            return "done"
+            user_exist = ...
 
 
 
