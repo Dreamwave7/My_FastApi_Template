@@ -1,8 +1,11 @@
 from fastapi import FastAPI, Depends, Request, Response
 from fastapi.responses import HTMLResponse
 from database import get_session
+from users.router import user_router
+from users.service import UserService
 
 app = FastAPI()
+app.include_router(user_router)
 
 
 
@@ -19,3 +22,5 @@ async def home(response : Response, db = Depends(get_session)):
 async def get_cookie(request: Request):
     token = request.cookies.get("testkey")
     return token
+
+    
