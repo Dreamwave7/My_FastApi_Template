@@ -10,7 +10,11 @@ class UserBase(OrmBaseModel):
     is_active:bool = Field(default=False)
 
 class UserRegister(BaseModel):
-    email:EmailStr
+    email: EmailStr
+    password:str
+
+class UserLogin(BaseModel):
+    email:str
     password:str
 
 
